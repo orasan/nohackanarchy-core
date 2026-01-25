@@ -1,0 +1,38 @@
+name: NHANCORE
+version: '1.1.0'
+main: io.github.orasan.HANCORE.NHANCORE
+api-version: '1.21'
+commands:
+  suicide:
+    description: セルフキル
+    usage: /suicide
+  ignore:
+    description: プレイヤーを無視する
+    usage: /ignore <player> or /ignore list
+  delignore:
+    description: 無視リストからプレイヤーを削除する
+    usage: /delignore <player>
+  ignorelist:
+    description: 無視リスト(プレイヤー)を確認する
+    usage: /ignorelist
+  ignoreword:
+    description: 単語を無視する
+    usage: /ignoreword <word> or /ignoreword list
+  delignoreword:
+    description: 無視リストから単語を削除する
+    usage: /delignoreword <word>
+  ignorewordlist:
+    description: 無視リスト(単語)を確認する
+    usage: /ignorewordlist
+  toggleadv:
+    description: 自身の進捗通知の表示・放送を切り替えます
+    usage: /toggleadv
+  toggledeathmsgs:
+    description: 死亡ログの表示を切り替えます
+    usage: /toggledeathmsgs
+  togglechat:
+    description: チャットの表示を切り替えます
+    usage: /togglechat
+  nhancore:
+    description: NohackAnarchy-Coreのメインコマンド
+    usage: /nhancore [reload]

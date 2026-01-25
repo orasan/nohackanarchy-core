@@ -1,0 +1,28 @@
+# NohackAnarchy-Core Configuration
+
+# General Settings
+debug: false
+default-lang: es_us
+
+death-messages:
+  # If true, when a player toggles death messages OFF, they will not see their OWN death message either.
+  # If false (default), they will always see their own death message even if toggled off.
+  hide-own-on-toggle: false
+  
+  # If true, when a victim has toggled death messages OFF, their death will NOT be broadcast to others.
+  # If false (default), others will see the victim's death message (if they have death messages enabled).
+  suppress-broadcast-on-toggle: false
+
+chat:
+  # If true, when a player has toggled chat OFF, they will also be blocked from receiving private messages (/tell, /msg, /w).
+  # If false (default), they can still receive private messages even if global chat is hidden.
+  hide-tell-on-toggle: false
+
+ignore:
+  # Maximum length of words that can be added to the ignore word list.
+  word-limit: 15
+
+advancements:
+  # If true, when you have /toggleadv OFF, you will NOT see your own advancement messages.
+  # If false (default), you will see your own advancement messages even if toggled off.
+  hide-own-on-toggle: false

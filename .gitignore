@@ -1,0 +1,31 @@
+# Gradle files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code files
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# Eclipse files
+.metadata/
+
+# MacOS
+.DS_Store
+
+# Server run folder (for local testing)
+run/
+
+# Logs
+*.log
