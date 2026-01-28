@@ -2,7 +2,7 @@
 
 # General Settings
 debug: false
-default-lang: es_us
+default-lang: en_us
 
 death-messages:
   # If true, when a player toggles death messages OFF, they will not see their OWN death message either.
