@@ -34,6 +34,10 @@ public class IgnoreCommand implements CommandExecutor {
         IgnoreManager ignoreManager = plugin.getIgnoreManager();
 
         if (label.equalsIgnoreCase("ignore")) {
+            if (!player.hasPermission("nhancore.command.ignore")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             if (args.length < 1) {
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "ignore_usage"));
                 return true;
@@ -67,6 +71,10 @@ public class IgnoreCommand implements CommandExecutor {
             return true;
 
         } else if (label.equalsIgnoreCase("delignore")) {
+            if (!player.hasPermission("nhancore.command.delignore")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             if (args.length < 1) {
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "delignore_usage"));
                 return true;
@@ -85,6 +93,10 @@ public class IgnoreCommand implements CommandExecutor {
             return true;
 
         } else if (label.equalsIgnoreCase("ignorelist")) {
+            if (!player.hasPermission("nhancore.command.ignorelist")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             showList(player);
             return true;
         }

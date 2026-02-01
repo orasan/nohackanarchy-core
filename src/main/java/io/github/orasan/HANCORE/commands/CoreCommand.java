@@ -36,6 +36,11 @@ public class CoreCommand implements CommandExecutor {
             return true;
         }
 
+        if (!sender.hasPermission("nhancore.command.core")) {
+            sender.sendMessage(plugin.getConfigManager().getMessage(sender, "no_permission"));
+            return true;
+        }
+
         sender.sendMessage(
                 Component.text("NohackAnarchy-Core v" + plugin.getPluginMeta().getVersion(), NamedTextColor.AQUA));
         return true;

@@ -30,7 +30,7 @@ public final class NHANCORE extends JavaPlugin {
         this.toggleManager = new ToggleManager(this);
 
         // Commands
-        this.getCommand("suicide").setExecutor(new SuicideCommand());
+        this.getCommand("suicide").setExecutor(new SuicideCommand(this));
 
         IgnoreCommand ignoreCmd = new IgnoreCommand(this);
         this.getCommand("ignore").setExecutor(ignoreCmd);

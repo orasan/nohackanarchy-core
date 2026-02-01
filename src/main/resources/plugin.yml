@@ -36,3 +36,40 @@ commands:
   nhancore:
     description: NohackAnarchy-Coreのメインコマンド
     usage: /nhancore [reload]
+permissions:
+  nhancore.admin:
+    description: "NohackAnarchy-Coreの管理者権限"
+    default: op
+  nhancore.command.suicide:
+    description: "/suicide コマンドを使用する権限"
+    default: true
+  nhancore.command.ignore:
+    description: "/ignore コマンドを使用する権限"
+    default: true
+  nhancore.command.delignore:
+    description: "/delignore コマンドを使用する権限"
+    default: true
+  nhancore.command.ignorelist:
+    description: "/ignorelist コマンドを使用する権限"
+    default: true
+  nhancore.command.ignoreword:
+    description: "/ignoreword コマンドを使用する権限"
+    default: true
+  nhancore.command.delignoreword:
+    description: "/delignoreword コマンドを使用する権限"
+    default: true
+  nhancore.command.ignorewordlist:
+    description: "/ignorewordlist コマンドを使用する権限"
+    default: true
+  nhancore.command.toggleadv:
+    description: "/toggleadv コマンドを使用する権限"
+    default: true
+  nhancore.command.toggledeathmsgs:
+    description: "/toggledeathmsgs コマンドを使用する権限"
+    default: true
+  nhancore.command.togglechat:
+    description: "/togglechat コマンドを使用する権限"
+    default: true
+  nhancore.command.core:
+    description: "/nhancore コマンドを使用する権限"
+    default: true

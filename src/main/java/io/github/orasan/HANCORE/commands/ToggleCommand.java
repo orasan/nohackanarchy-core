@@ -29,6 +29,10 @@ public class ToggleCommand implements CommandExecutor {
         ToggleManager toggleManager = plugin.getToggleManager();
 
         if (label.equalsIgnoreCase("toggledeathmsgs")) {
+            if (!player.hasPermission("nhancore.command.toggledeathmsgs")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             boolean newState = toggleManager.toggle(player.getUniqueId(), ToggleType.SHOW_DEATH_MESSAGES);
             if (newState) {
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "toggledeathmsgs_on"));
@@ -39,6 +43,10 @@ public class ToggleCommand implements CommandExecutor {
         }
 
         if (label.equalsIgnoreCase("togglechat")) {
+            if (!player.hasPermission("nhancore.command.togglechat")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             boolean newState = toggleManager.toggle(player.getUniqueId(), ToggleType.GLOBAL_CHAT);
             if (newState) {
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "togglechat_on"));
@@ -49,6 +57,10 @@ public class ToggleCommand implements CommandExecutor {
         }
 
         if (label.equalsIgnoreCase("toggleadv")) {
+            if (!player.hasPermission("nhancore.command.toggleadv")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             boolean newShow = toggleManager.toggle(player.getUniqueId(), ToggleType.SHOW_ADVANCEMENTS);
 
             // Sync BROADCAST to match SHOW

@@ -32,6 +32,10 @@ public class IgnoreWordCommand implements CommandExecutor {
         IgnoreManager ignoreManager = plugin.getIgnoreManager();
 
         if (label.equalsIgnoreCase("ignoreword")) {
+            if (!player.hasPermission("nhancore.command.ignoreword")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             if (args.length < 1) {
                 // Usage (should be added to lang)
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "ignoreword_usage"));
@@ -59,6 +63,10 @@ public class IgnoreWordCommand implements CommandExecutor {
             return true;
 
         } else if (label.equalsIgnoreCase("delignoreword")) {
+            if (!player.hasPermission("nhancore.command.delignoreword")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             if (args.length < 1) {
                 player.sendMessage(plugin.getConfigManager().getMessage(player, "delignoreword_usage"));
                 return true;
@@ -72,6 +80,10 @@ public class IgnoreWordCommand implements CommandExecutor {
             }
             return true;
         } else if (label.equalsIgnoreCase("ignorewordlist")) {
+            if (!player.hasPermission("nhancore.command.ignorewordlist")) {
+                player.sendMessage(plugin.getConfigManager().getMessage(player, "no_permission"));
+                return true;
+            }
             showList(player);
             return true;
         }
