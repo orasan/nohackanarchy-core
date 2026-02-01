@@ -17,7 +17,8 @@ public class CoreCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull @SuppressWarnings("unused") Command command,
+            @NotNull @SuppressWarnings("unused") String label,
             @NotNull String[] args) {
         if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("nhancore.admin")) {
@@ -36,7 +37,7 @@ public class CoreCommand implements CommandExecutor {
         }
 
         sender.sendMessage(
-                Component.text("NohackAnarchy-Core v" + plugin.getDescription().getVersion(), NamedTextColor.AQUA));
+                Component.text("NohackAnarchy-Core v" + plugin.getPluginMeta().getVersion(), NamedTextColor.AQUA));
         return true;
     }
 }

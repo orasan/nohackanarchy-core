@@ -2,13 +2,13 @@ package io.github.orasan.HANCORE.listeners;
 
 import io.github.orasan.HANCORE.NHANCORE;
 import io.github.orasan.HANCORE.managers.IgnoreManager;
-import io.github.orasan.HANCORE.managers.IgnoreManager;
+import io.github.orasan.HANCORE.managers.ToggleManager;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-
-import java.util.Set;
 
 public class ChatListener implements Listener {
 
@@ -19,20 +19,19 @@ public class ChatListener implements Listener {
     }
 
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent event) {
+    public void onChat(AsyncChatEvent event) {
         Player sender = event.getPlayer();
-        String message = event.getMessage(); // Legacy string method is easier for keyword checking than Component
+        Component messageComponent = event.message();
+        // Serialize component to plain text for IgnoreManager checks
+        String message = PlainTextComponentSerializer.plainText().serialize(messageComponent);
         IgnoreManager ignoreManager = plugin.getIgnoreManager();
 
-        // Loop through recipients and remove those who ignore the sender or content
-        // We use a safe way to remove from the recipients set
-        Set<Player> recipients = event.getRecipients();
+        event.viewers().removeIf(audience -> {
+            if (!(audience instanceof Player recipient)) {
+                return false; // Don't filter console or other audiences
+            }
 
-        // RemoveIf is safe on the Set provided by event.getRecipients() in most server
-        // implementations,
-        // but to be absolutely safe and follow logic:
-        recipients.removeIf(recipient -> {
-            // Don't hide from self unless we really want to (usually we don't)
+            // Don't hide from self
             if (recipient.equals(sender))
                 return false;
 
@@ -41,8 +40,7 @@ public class ChatListener implements Listener {
                 return true;
 
             // 2. Check Toggle System (Chat Toggle)
-            if (!plugin.getToggleManager().getToggle(recipient.getUniqueId(),
-                    io.github.orasan.HANCORE.managers.ToggleManager.ToggleType.GLOBAL_CHAT)) {
+            if (!plugin.getToggleManager().getToggle(recipient.getUniqueId(), ToggleManager.ToggleType.GLOBAL_CHAT)) {
                 return true;
             }
 
